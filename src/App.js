@@ -8,13 +8,22 @@ import FeedbackData from './components/data/FeedbackData';
 function App() {
 
   const [feedback,setFeedback] = useState(FeedbackData)
-  
+  // I can't delete directly from the data. 
+  // I have to filter out the selected object and save the new list
+  const deleteFeedback = (id)=>{
+    if(window.confirm('Are You sure ? ')){
+      setFeedback(feedback.filter((item)=> item.id !== id) )
+    }
+    console.log('App',id)
+
+  }
+
   return (
     <>
 
       <Header />
       <div className='container'>
-        <FeedbackList feedback={feedback}/>
+        <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
       </div>
     </>
    
