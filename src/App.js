@@ -3,6 +3,7 @@ import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
 import {useState} from 'react'
 import FeedbackData from './components/data/FeedbackData';
+import FeedbackStats from './components/FeedbackStats';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     if(window.confirm('Are You sure ? ')){
       setFeedback(feedback.filter((item)=> item.id !== id) )
     }
-    console.log('App',id)
+    console.log('from App  ',id)
 
   }
 
@@ -23,6 +24,7 @@ function App() {
 
       <Header />
       <div className='container'>
+        <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
       </div>
     </>
