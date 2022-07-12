@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 const Button = ({children,version,type,isDisabled}) => {
   return (
-    <button type={type} isDisabled={isDisabled} className={`btn btn-${version}`}>
+    <button type={type} disabled={isDisabled} className={`btn btn-${version}`}>
         {children}
     </button>
   )
