@@ -10,7 +10,7 @@ import {v4 as uuidv4} from 'uuid'
 function App() {
 
   const [feedback,setFeedback] = useState(FeedbackData)
-  
+
   // I can't delete directly from the data. 
   // I have to filter out the selected object and save the new list
 
@@ -18,7 +18,6 @@ function App() {
     if(window.confirm('Are You sure ? ')){
       setFeedback(feedback.filter((item)=> item.id !== id) )
     }
-    console.log('from App  ',id)
 
   }
 
