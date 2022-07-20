@@ -22,6 +22,18 @@ export const FeedbackProvider = ({children}) =>  {
         }
     ])
 
+    const [feedbackEdit,setFeedbackEdit] = useState({
+        item: {},
+        edit: false 
+    })
+
+    //set item to be updated
+    const editFeedback = (item) =>{
+        setFeedbackEdit({
+            item,
+            edit:true
+        })
+    }
     // I can't delete directly from the data. 
     // I have to filter out the selected object and save the new list
     const deleteFeedback = (id)=>{
@@ -41,7 +53,8 @@ export const FeedbackProvider = ({children}) =>  {
     return <FeedbackContext.Provider value={{
         feedback:feedback,
         deleteFeedback,
-        addFeedback
+        addFeedback,
+        editFeedback
     }}>
         {children}
     </FeedbackContext.Provider>
