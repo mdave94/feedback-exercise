@@ -1,15 +1,15 @@
-import './App.css';
-import Header from './components/Header';
-import FeedbackList from './components/FeedbackList';
+import './App.css'
+import Header from './components/Header'
+import FeedbackList from './components/FeedbackList'
 import {useState} from 'react'
-import FeedbackData from './components/data/FeedbackData';
-import FeedbackStats from './components/FeedbackStats';
-import FeedbackForm from './components/FeedbackForm';
+import FeedbackData from './components/data/FeedbackData'
+import FeedbackStats from './components/FeedbackStats'
+import FeedbackForm from './components/FeedbackForm'
 import {v4 as uuidv4} from 'uuid'
-import AboutPage from './pages/AboutPage';
-import {BrowserRouter as Router, Route,Routes} from 'react-router-dom' 
-import AboutPageLink from './components/AboutPageLink';
-
+import AboutPage from './pages/AboutPage'
+import {BrowserRouter as Router, Route,Routes,NavLink} from 'react-router-dom' 
+import AboutPageLink from './components/AboutPageLink'
+import {FeedbackProvider} from './context/FeedbackContext'
 
 
 function App() {
@@ -35,7 +35,8 @@ function App() {
   }
 
   return (
-    <Router>
+    <FeedbackProvider>
+      <Router>
      
       <Header />
       <div className='container'>
@@ -45,17 +46,17 @@ function App() {
               <FeedbackForm handleAdd={addFeedback}/>
               <FeedbackStats feedback={feedback}/>
               <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+              
               <AboutPageLink/></div>}/>
         </Routes>
                 
                 
-                
-          
-     
+      
       </div>
-    </Router>
+      </Router>
+    </FeedbackProvider>
+   
    
     )}
 
-export default App;
-   
+export default App; 
