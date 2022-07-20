@@ -8,17 +8,17 @@ export const FeedbackProvider = ({children}) =>  {
         {
             id:1,
             text: 'tthis item is from context 1',
-            rating:10
+            rating:2
         },
         {
             id:2,
             text: 'tthis item is from context 2',
-            rating:10
+            rating:3
         },
         {
             id:3,
             text: 'tthis item is from context 3',
-            rating:10
+            rating:4
         }
     ])
 
@@ -54,7 +54,10 @@ export const FeedbackProvider = ({children}) =>  {
         feedback:feedback,
         deleteFeedback,
         addFeedback,
-        editFeedback
+        editFeedback,
+        //this is the state that holds the item and boolean
+        //the Form needs to know that
+        feedbackEdit
     }}>
         {children}
     </FeedbackContext.Provider>
