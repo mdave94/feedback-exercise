@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {useContext} from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
-const FeedbackStats = ({feedback}) => {
+
+const FeedbackStats = () => {
+    const {feedback} = useContext(FeedbackContext)
     //The Reduce method is a method in the javascript array used to reduce the number of elements in an array.
     //the second param 0 is the initial value
     let calculatedAverage = feedback.reduce((summ, element)=>{

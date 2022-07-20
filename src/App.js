@@ -44,8 +44,8 @@ function App() {
             <Route exact path='/about' element={<AboutPage/>}/>  
             <Route exact path='/' element={<div>
               <FeedbackForm handleAdd={addFeedback}/>
-              <FeedbackStats feedback={feedback}/>
-              <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+              <FeedbackStats />
+              <FeedbackList  handleDelete={deleteFeedback}/>
               
               <AboutPageLink/></div>}/>
         </Routes>
