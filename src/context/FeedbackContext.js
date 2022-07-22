@@ -18,7 +18,6 @@ export const FeedbackProvider = ({children}) =>  {
     //Fetch the data from db.json 
     const fetchFeedback = async () => {
         const response = await fetch(`http://localhost:5000/feedback`)
-
         const data = await response.json()
 
         setFeedback(data)
@@ -50,10 +49,21 @@ export const FeedbackProvider = ({children}) =>  {
     
       }
 
-    const addFeedback=(newFeedback )=>{
-    newFeedback.id = uuidv4()
-    //copy off the current array, and push the new feedback to the front
-    setFeedback([newFeedback,...feedback])
+    const addFeedback= async(newFeedback )=>{
+        const response = await fetch(`http://localhost:5000/feedback`,
+        {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(newFeedback)
+        })
+
+        const data = await response.json()
+       //Don't need anymore this uud
+        // newFeedback.id = uuidv4()
+        //copy off the current array, and push the new feedback to the front
+        setFeedback([data,...feedback])
     
     }
 
