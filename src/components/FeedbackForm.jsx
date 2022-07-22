@@ -14,7 +14,7 @@ const FeedbackForm = () => {
 
     //using useContext hook 
     //feedbackEdit is the item,not the func
-    const {addFeedback,feedbackEdit} = useContext(FeedbackContext)
+    const {addFeedback,feedbackEdit,updateFeedback} = useContext(FeedbackContext)
 
     useEffect(()=>{
       
@@ -26,29 +26,36 @@ const FeedbackForm = () => {
     },[feedbackEdit])
 
     const handleTextChange = (e)=>{
+       
         if(text === ''){
             setBtnDisabled(true)
             setMessage(null)
-        }else if(text!=='' && text.trim().length<=10){
+        }else if(text!=='' && rating === '' ){
             setBtnDisabled(true)
-            setMessage('Minimum 10 characters pls')
+            setMessage('Minimum 10 characters pls, or set rating')
         }else{
             setMessage(null)
             setBtnDisabled(false)
         }
+        setRating(rating)
         setText(e.target.value)
     }
 
     const handleSubmit = (e) =>{
-        e.preventDefault()
-        if(text.trim().length > 10 ){
+       e.preventDefault()
+       console.log(rating)
+
+        if(text.trim().length > 10 && rating !=""){
             const newFeedback = {
                 text: text,
                 rating: rating
             }
 
-            addFeedback(newFeedback)
-            
+            if(feedbackEdit.edit === true){
+                updateFeedback(feedbackEdit.item.id, newFeedback)
+            }else{
+                addFeedback(newFeedback)
+            }
             setText('')
         }
     }

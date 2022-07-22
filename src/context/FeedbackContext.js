@@ -34,6 +34,19 @@ export const FeedbackProvider = ({children}) =>  {
             edit:true
         })
     }
+
+
+
+    //update feedback Item 
+    const updateFeedback = (id, updatedItem) =>{
+
+        setFeedback(feedback.map((item)=> item.id === id ? {...item,...updatedItem} : item))
+
+    }
+
+
+
+
     // I can't delete directly from the data. 
     // I have to filter out the selected object and save the new list
     const deleteFeedback = (id)=>{
@@ -49,15 +62,19 @@ export const FeedbackProvider = ({children}) =>  {
     setFeedback([newFeedback,...feedback])
     
     }
+
+
+
     
     return <FeedbackContext.Provider value={{
         feedback:feedback,
+        //this is the state that holds the item and boolean
+        //the Form needs to know that
+        feedbackEdit,
         deleteFeedback,
         addFeedback,
         editFeedback,
-        //this is the state that holds the item and boolean
-        //the Form needs to know that
-        feedbackEdit
+        updateFeedback
     }}>
         {children}
     </FeedbackContext.Provider>
